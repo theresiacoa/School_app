@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "theresiacoa",
+    "password": "thereee",
+    "database": "w3_seqExpress",
+    "host": "127.0.0.1",
+    "dialect": "postgres"
+  }
+}
