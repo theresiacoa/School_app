@@ -6,7 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
+<%- include('./partials/styles.ejs') %>
+
 <body>
+    <%- include("./partials/navbar.ejs") %>
     <form action="/students/add" method="post">
       First name:<br>
       <input type="text" name="firstname">

@@ -3,6 +3,7 @@ const app = express();
 const studentRoutes = require('./routes/student')
 const teacherRoutes = require('./routes/teacher')
 const subjectRoutes = require('./routes/subject')
+const userRoutes = require('./routes/user')
 
 app.use(express.urlencoded({extended: false}));
 app.set('view engine', 'ejs');
@@ -16,6 +17,7 @@ app.get('/', (req, res) => {
 app.use('/students', studentRoutes);
 app.use('/teachers', teacherRoutes);
 app.use('/subjects', subjectRoutes);
+app.use('/user', userRoutes);
 
 app.listen(3000, () => {
   console.log(`listening to PORT ---- 3000`);

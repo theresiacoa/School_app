@@ -7,10 +7,11 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
-  <%- include('/partials/styles.ejs') %>
+<%- include('./partials/styles.ejs') %>
+
 <body>
     <%- include("./partials/navbar.ejs") %>
-  <h1>Add Subject to Student</h1>
+  <h1>Add Score to Student</h1>
 
   <table>
       <tr>
@@ -27,12 +28,10 @@
       </tr>
       <br>
   </table>
-<form action="/students/<%= data.id %>/addSubject" method="POST">
-  <select name="subject">
-    <% subj.forEach(function(e) { %>
-      <option name="subject"><%= e.subjectName %></option>
-    <% }) %> 
-  </select>
+<form action="/subjects/<%= data.id %>/score" method="POST">
+  Score:<br>
+  <input type="text" name="score">
+  <br>
   <input type="submit" value="Submit">
 </form>
   

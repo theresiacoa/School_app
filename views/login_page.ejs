@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title><%=purpose%></title>
+</head>
+<%- include('./partials/styles.ejs') %>
+<body>
+
+    <div class="form-style-8">
+        <h2><%= purpose%></h2>
+        <form action="/user/<%= purpose%>" method="POST">
+            Email:<br>
+            <input type="text" name="email">
+            <br><br>
+        
+            Name:<br>
+            <input type="text" name="name">
+            <br>
+
+            <% if (purpose === 'login') { %>
+              <br>Password:<br>
+              <input type="text" name="password">
+              <br>
+              <% } %>
+            <input type="submit" value="Submit">
+        </form>
+      </div>
+    
+  </form>
+
+  
+</body>
+</html>

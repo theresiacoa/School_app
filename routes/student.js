@@ -2,9 +2,11 @@ const express = require('express')
 const router = express.Router();
 const Model = require('../models');
 
+
 router.get('/', (req, res) => {
   Model.Student.findAll()
     .then((data) => {
+      // res.send(data)
       res.render('students_data.ejs', { data: data })
     })
     .catch((err) => {

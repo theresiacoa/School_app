@@ -7,8 +7,9 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
-
+<%- include('./partials/styles.ejs') %>
 <body>
+    <%- include("./partials/navbar.ejs") %>
   <form action="/teachers/edit/<%= data.id %>" method="post">
 
     First name:<br>

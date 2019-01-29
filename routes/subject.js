@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router();
 const Model = require('../models');
+const giveScore = require('../helpers/score')
 
 router.get('/', (req, res) => {
   Model.Subject.findAll()
@@ -89,17 +90,39 @@ router.get('/delete/:id', (req, res) => {
 })
 
 router.get('/:id/enrolled-students', (req, res) => {
-
   Model.Subject.findByPk(req.params.id, {
     include: Model.Student
   })
     .then((data) => {
-      res.send(data);
+      res.render('subjects_studentsScore.ejs', {data: data, score: giveScore});
     })
-    .then(students => {
-      console.log(students)
-      // res.send(students)
-      // res.render('subjects_studentsScore.ejs', {data: students});
+    .catch(err => {
+      res.send(err);
+    })
+})
+
+router.get('/:id/score', (req, res) => {
+  Model.Student.findByPk(req.params.id)
+    .then((data) => {
+      // res.send(data)
+      res.render('subject_score.ejs', {data});
+    })
+    .catch((err) => { 
+      res.send(err);
+    })
+})
+
+router.post('/:id/score', (req, res) => {
+  Model.StudentSubject.findOne({
+    where: {StudentId: req.params.id}
+  })
+    .then((data) => {
+      return Model.StudentSubject.update(req.body, {
+        where: {id: data.id}
+      })
+    })
+    .then(() => {
+      res.redirect('/subjects');
     })
     .catch(err => {
       res.send(err);

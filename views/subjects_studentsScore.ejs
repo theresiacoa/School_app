@@ -7,25 +7,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
-<style>
-    table {
-      font-family: arial, sans-serif;
-      border-collapse: collapse;
-      width: 100%;
-    }
-    
-    td, th {
-      border: 1px solid #dddddd;
-      text-align: left;
-      padding: 8px;
-    }
-    
-    tr:nth-child(even) {
-      background-color: #dddddd;
-    }
-    </style>
+<%- include('./partials/styles.ejs') %>
 
 <body>
+    <%- include("./partials/navbar.ejs") %>
   <h1>Add Subject to Student</h1>
 
   <table>
@@ -34,16 +19,17 @@
       <th>Score</th>
     </tr>
 
-    <%= data.forEach(e => { %>
+    <% data.Students.forEach(e => { %>
       <tr>
-          <td><%= data.firstName + " " + data.lastName %></td>
-          <% if (!data.score) { %>
+          <td><%= e.firstName + " " + e.lastName %></td>
+          <% if (!e.StudentSubject.score) { %>
             <td><a href="/subjects/<%= e.id%>/score">Give Score</a></td>
           <% } else { %>
-            <td><%= data.score %></td>
+            <td><%= score(e.StudentSubject.score) %></td>
          <% } %>
         </tr>
     <% }) %>
+
       
   </table>
 

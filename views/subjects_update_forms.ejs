@@ -7,8 +7,10 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
 </head>
+<%- include('./partials/styles.ejs') %>
 
 <body>
+    <%- include("./partials/navbar.ejs") %>
   <form action="/subjects/edit/<%= data.id %>" method="post">
     Subject Name:<br>
     <input type="text" name="subjectName" value="<%= data.subjectName %>">
